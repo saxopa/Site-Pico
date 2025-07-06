@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chants Guyanais - Partage des chants d'oiseaux de Guyane</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2A9D8F;
+            --secondary: #E9C46A;
+            --accent: #E76F51;
+            --dark: #264653;
+            --light: #F4F1DE;
+        }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .bird-gradient {
+            background: linear-gradient(135deg, #2A9D8F 0%, #E9C46A 100%);
+        }
+        
+        .audio-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .audio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bird-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            font-size: 24px;
+        }
+        
+        .waveform {
+            height: 50px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                #cbd5e1 2px,
+                #cbd5e1 4px
+            );
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .waveform::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            animation: wave-animation 1.5s infinite linear;
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0,10 C15,15 30,5 45,10 C60,15 75,5 90,10 L90,20 L0,20 Z' fill='black'/%3E%3C/svg%3E");
+            mask-size: 100% 100%;
+        }
+        
+        @keyframes wave-animation {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .bird-animation {
+            animation: fly 15s infinite linear;
+        }
+        
+        @keyframes fly {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="bird-icon mr-3">
+                        <i class="fas fa-dove"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Chants Guyanais</h1>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#explorer" class="text-gray-600 hover:text-green-600 font-medium">Explorer</a>
+                    <a href="#categories" class="text-gray-600 hover:text-green-600 font-medium">Catégories</a>
+                    <a href="#soumettre" class="text-gray-600 hover:text-green-600 font-medium">Soumettre</a>
+                    <a href="#communaute" class="text-gray-600 hover:text-green-600 font-medium">Communauté</a>
+                </nav>
+                
+                <div class="flex items-center">
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-medium flex items-center">
+                        <i class="fas fa-user-plus mr-2"></i> S'inscrire
+                    </button>
+                    <button class="md:hidden ml-4 text-gray-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bird-gradient py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Partagez et découvrez les chants d'oiseaux de Guyane</h1>
+                    <p class="text-xl text-white mb-8">Une plateforme collaborative dédiée aux passionnés des oiseaux guyanais et leurs mélodies uniques.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-white text-green-700 hover:bg-gray-100 px-6 py-3 rounded-full font-bold text-lg shadow-lg">
+                            Explorer les chants <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                        <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-700 px-6 py-3 rounded-full font-bold text-lg">
+                            Contribuer <i class="fas fa-plus ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="relative">
+                        <div class="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-yellow-300 opacity-20"></div>
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-green-300 opacity-20"></div>
+                        <div class="relative bg-white rounded-2xl shadow-xl p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h3 class="font-bold">Lortie - Chant du matin</h3>
+                                        <p class="text-sm text-gray-500">Soumis par Jean D.</p>
+                                    </div>
+                                </div>
+                                <div class="text-green-600">
+                                    <i class="fas fa-heart"></i> 42
+                                </div>
+                            </div>
+                            <div class="waveform mb-4 rounded-lg overflow-hidden"></div>
+                            <div class="flex justify-between text-sm text-gray-500">
+                                <span>0:42</span>
+                                <span>1:20</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Flying birds animation -->
+                    <div class="absolute -top-8 left-0 right-0 overflow-hidden h-8">
+                        <div class="bird-animation flex space-x-4">
+                            <i class="fas fa-dove text-white"></i>
+                            <i class="fas fa-crow text-white"></i>
+                            <i class="fas fa-kiwi-bird text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Catégories de Chants</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Découvrez les différentes catégories de chants d'oiseaux guyanais et leurs spécificités.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Category Card 1 -->
+                <div class="audio-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 text-xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <h3 class="text-xl font-bold ml-4">Chants Traditionnels</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Les chants classiques des oiseaux emblématiques de Guyane comme le Lortie, Picolette et Twatwa.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Lortie</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Picolette</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Twatwa</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 px-6 py-4 flex justify-between items-center">
+                        <span class="text-gray-600">24 enregistrements</span>
+                        <button class="text-green-600 font-medium flex items-center">
+                            Écouter <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Category Card 2 -->
+                <div class="audio-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-xl">
+                                <i class="fas fa-female"></i>
+                            </div>
+                            <h3 class="text-xl font-bold ml-4">Chants de Femelles</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Chants spécifiques utilisés pour stimuler les mâles et améliorer leurs performances vocales.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">Stimulation</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">Perfectionnement</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">Entraînement</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 px-6 py-4 flex justify-between items-center">
+                        <span class="text-gray-600">18 enregistrements</span>
+                        <button class="text-green-600 font-medium flex items-center">
+                            Écouter <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Category Card 3 -->
+                <div class="audio-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <h3 class="text-xl font-bold ml-4">Variétés Régionales</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Chants spécifiques à différentes régions de Guyane et leurs variations uniques.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Pyé Krazé</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Dorémi du Brésilien</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">8-8</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Suriname</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Ananas</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 px-6 py-4 flex justify-between items-center">
+                        <span class="text-gray-600">32 enregistrements</span>
+                        <button class="text-green-600 font-medium flex items-center">
+                            Écouter <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Birds Section -->
+    <section id="explorer" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Oiseaux Emblématiques</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Découvrez les espèces les plus appréciées et leurs chants caractéristiques.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Bird Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <div class="h-48 bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
+                            <i class="fas fa-dove text-white text-6xl"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            Populaire
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Lortie</h3>
+                        <p class="text-gray-600 mb-4">Connu pour son chant mélodieux et varié, très apprécié des amateurs.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-music mr-1"></i> 12 chants
+                            </div>
+                            <button class="text-green-600 font-medium">
+                                Écouter <i class="fas fa-play ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bird Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <div class="h-48 bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center">
+                            <i class="fas fa-kiwi-bird text-white text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Picolette</h3>
+                        <p class="text-gray-600 mb-4">Son chant rapide et rythmé est caractéristique des forêts guyanaises.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-music mr-1"></i> 8 chants
+                            </div>
+                            <button class="text-green-600 font-medium">
+                                Écouter <i class="fas fa-play ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bird Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                            <i class="fas fa-crow text-white text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Twatwa</h3>
+                        <p class="text-gray-600 mb-4">Reconnu pour ses variations complexes et son chant puissant.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-music mr-1"></i> 10 chants
+                            </div>
+                            <button class="text-green-600 font-medium">
+                                Écouter <i class="fas fa-play ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bird Card 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <div class="h-48 bg-gradient-to-r from-blue-400 to-teal-500 flex items-center justify-center">
+                            <i class="fas fa-feather text-white text-6xl"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            Nouveau
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Dorémi du Brésilien</h3>
+                        <p class="text-gray-600 mb-4">Chant mélodieux avec des notes ascendantes caractéristiques.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-music mr-1"></i> 6 chants
+                            </div>
+                            <button class="text-green-600 font-medium">
+                                Écouter <i class="fas fa-play ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submission Section -->
+    <section id="soumettre" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-2/5 bg-gradient-to-b from-green-500 to-teal-600 p-8 text-white">
+                        <h2 class="text-2xl font-bold mb-4">Partagez vos enregistrements</h2>
+                        <p class="mb-6">Contribuez à enrichir notre collection de chants d'oiseaux guyanais en partageant vos propres enregistrements.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2"></i> Identification par la communauté
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2"></i> Validation par des experts
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2"></i> Contribution à la préservation
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-3/5 p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Soumettre un chant</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2" for="bird-type">Type d'oiseau</label>
+                                <select id="bird-type" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option>Sélectionnez un oiseau</option>
+                                    <option>Lortie</option>
+                                    <option>Picolette</option>
+                                    <option>Twatwa</option>
+                                    <option>Dorémi du Brésilien</option>
+                                    <option>8-8</option>
+                                    <option>Suriname</option>
+                                    <option>Ananas</option>
+                                    <option>Femelle (stimulation)</option>
+                                    <option>Autre</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2" for="chant-type">Type de chant</label>
+                                <select id="chant-type" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option>Sélectionnez un type</option>
+                                    <option>Chant traditionnel</option>
+                                    <option>Chant de femelle (stimulation)</option>
+                                    <option>Chant régional</option>
+                                    <option>Chant d'apprentissage</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2" for="location">Localisation</label>
+                                <input type="text" id="location" placeholder="Où avez-vous enregistré ce chant?" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2">Enregistrement audio</label>
+                                <div class="border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:bg-gray-50 transition">
+                                    <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                                    <p class="text-gray-600">Glissez-déposez votre fichier audio ici</p>
+                                    <p class="text-sm text-gray-500 mt-2">Formats acceptés: MP3, WAV, AAC</p>
+                                    <button class="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium">
+                                        Sélectionner un fichier
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg">
+                                Soumettre le chant
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="communaute" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Communauté Active</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Rejoignez notre communauté de passionnés et contribuez à la préservation des chants d'oiseaux guyanais.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Collaboration</h3>
+                    <p class="text-gray-600 mb-4">Échangez avec d'autres passionnés, identifiez ensemble les chants et partagez vos connaissances.</p>
+                    <button class="text-green-600 font-medium flex items-center">
+                        Rejoindre <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Concours Mensuels</h3>
+                    <p class="text-gray-600 mb-4">Participez à nos concours de reconnaissance de chants et gagnez des récompenses.</p>
+                    <button class="text-green-600 font-medium flex items-center">
+                        Voir les concours <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Ressources</h3>
+                    <p class="text-gray-600 mb-4">Accédez à notre bibliothèque de ressources pour apprendre à identifier et enregistrer les chants.</p>
+                    <button class="text-green-600 font-medium flex items-center">
+                        Explorer <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="bird-icon mr-3">
+                            <i class="fas fa-dove"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Chants Guyanais</h2>
+                    </div>
+                    <p class="text-gray-400 mb-4">Plateforme collaborative dédiée à la préservation et au partage des chants d'oiseaux guyanais.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Catégories</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Lortie</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Picolette</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Twatwa</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Chants de femelles</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Variétés régionales</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Ressources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Guide d'enregistrement</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Identification des oiseaux</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Lexique des chants</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Événements</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Recevez les dernières nouveautés et les chants récemment ajoutés.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 rounded-l-lg w-full text-gray-800 focus:outline-none">
+                        <button class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2023 Chants Guyanais. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Audio Player -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 flex items-center justify-between">
+        <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-4">
+                <i class="fas fa-play"></i>
+            </div>
+            <div>
+                <h4 class="font-bold">Lortie - Chant du matin</h4>
+                <p class="text-sm text-gray-600">Jean D.</p>
+            </div>
+        </div>
+        
+        <div class="flex-1 mx-8">
+            <div class="waveform rounded-lg overflow-hidden"></div>
+            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                <span>0:42</span>
+                <span>1:20</span>
+            </div>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+            <button class="text-gray-600 hover:text-green-600">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="text-gray-600 hover:text-green-600">
+                <i class="fas fa-step-forward"></i>
+            </button>
+            <button class="text-gray-600 hover:text-green-600">
+                <i class="fas fa-heart"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Simple audio player functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const playButtons = document.querySelectorAll('.fa-play');
+            const audioPlayer = document.querySelector('.fixed');
+            
+            playButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Show the audio player at the bottom
+                    audioPlayer.style.display = 'flex';
+                    
+                    // Simulate playing audio
+                    const playIcon = this;
+                    if (playIcon.classList.contains('fa-play')) {
+                        playIcon.classList.remove('fa-play');
+                        playIcon.classList.add('fa-pause');
+                    } else {
+                        playIcon.classList.remove('fa-pause');
+                        playIcon.classList.add('fa-play');
+                    }
+                });
+            });
+            
+            // Mobile menu toggle
+            const menuButton = document.querySelector('.md\\:hidden');
+            const menu = document.querySelector('nav');
+            
+            menuButton.addEventListener('click', function() {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                menu.classList.toggle('flex-col');
+                menu.classList.toggle('absolute');
+                menu.classList.toggle('top-16');
+                menu.classList.toggle('left-0');
+                menu.classList.toggle('right-0');
+                menu.classList.toggle('bg-white');
+                menu.classList.toggle('p-4');
+                menu.classList.toggle('shadow-lg');
+            });
+        });
+    </script>
+</body>
+</html>
